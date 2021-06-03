@@ -5,6 +5,7 @@ public class Product extends VendingMachine {
     private String name;
     private String price;
     private String category;
+    private int stock = 5;
 
     public Product(String name, String price, String category) {
         this.name = name;
@@ -25,10 +26,6 @@ public class Product extends VendingMachine {
             return "This item has no message! :(";
         }
     }
-
-
-
-
 
     public String getName() {
         return name;
@@ -52,5 +49,9 @@ public class Product extends VendingMachine {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public int getStock() {
+        return stock;
     }
 }
