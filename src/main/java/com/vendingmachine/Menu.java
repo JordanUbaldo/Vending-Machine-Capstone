@@ -30,3 +30,5 @@ public class Menu {
 
     }
 }
+
+// Need to finish and set up customer class.

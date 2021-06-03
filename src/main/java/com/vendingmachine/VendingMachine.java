@@ -17,6 +17,7 @@ public class VendingMachine {
                 String[] lineArray = line.split("\\|", 4);
                     Product product = new Product(lineArray[1], lineArray[2], lineArray[3]);
                     products.put(lineArray[0], product);
+
             }
 
         } catch (IOException e) {
