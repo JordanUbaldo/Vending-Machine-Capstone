@@ -1,8 +1,11 @@
 package com.vendingmachine;
 
+import java.text.DecimalFormat;
+
 public class Customer {
 
     private double totalMoney = 0.00;
+    private DecimalFormat df = new DecimalFormat("0.00");
 
     public void feedMoney(String moneyInput) {
         if (Double.parseDouble(moneyInput) % 1 ==0) {
@@ -25,6 +28,7 @@ public class Customer {
         int numQuarters = (int) Math.rint((totalMoney - modQuarters) / quarter);
         int numDimes = (int) Math.rint((modQuarters-modDimes) / dime);
         int numNickels = (int) Math.rint((modDimes-modNickels) / nickel);
+        totalMoney -= (numQuarters * quarter) + (numDimes * dime) + (numNickels * nickel);
 
         return "Quarters: " + numQuarters + " Dimes: " + numDimes + " Nickels: " + numNickels;
     }
@@ -34,6 +38,9 @@ public class Customer {
     }
 
     public double getTotalMoney() {
-        return totalMoney;
+        String total = df.format(totalMoney);
+        totalMoney = Double.parseDouble(total);
+
+    return totalMoney;
     }
 }

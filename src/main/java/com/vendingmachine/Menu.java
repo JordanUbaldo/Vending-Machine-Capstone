@@ -1,6 +1,5 @@
 package com.vendingmachine;
 
-import java.sql.SQLOutput;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -58,7 +57,6 @@ public class Menu {
                         for (String product : products.keySet()) {
                             System.out.println(product + ", $" + products.get(product).getPrice() + " " + products.get(product).getName() + ", " + "Stock: " + products.get(product).getStock());
                         }
-                        // Filter for Sold out or invalid on the user option below. (If else statement?)
                         System.out.println("Select Your Option:");
                         String userInput4 = scan.nextLine().toUpperCase();
 
@@ -73,6 +71,7 @@ public class Menu {
                             products.get(userInput4).itemPurchased();
                             System.out.println(products.get(userInput4).getName() + ", Cost: $" + products.get(userInput4).getPrice() + ", Money Remaining: $" + customer.getTotalMoney());
                             System.out.println(products.get(userInput4).getProductMessage());
+                            System.out.println();
                         }
 
                     } else if (userInput2.equals("3")) {
