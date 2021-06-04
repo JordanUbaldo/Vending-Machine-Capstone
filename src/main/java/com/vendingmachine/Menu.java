@@ -3,7 +3,7 @@ package com.vendingmachine;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Menu {
+public class Menu extends VendingMachine {
 
     public static void main(String[] args) {
 
