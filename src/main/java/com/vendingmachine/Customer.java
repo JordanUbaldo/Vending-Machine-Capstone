@@ -13,6 +13,22 @@ public class Customer {
         }
     }
 
+    public String getChange() {
+        double quarter = 0.25;
+        double dime = 0.10;
+        double nickel = 0.05;
+
+        double modQuarters = totalMoney % quarter;
+        double modDimes = modQuarters % dime;
+        double modNickels = modDimes % nickel;
+
+        int numQuarters = (int) Math.rint((totalMoney - modQuarters) / quarter);
+        int numDimes = (int) Math.rint((modQuarters-modDimes) / dime);
+        int numNickels = (int) Math.rint((modDimes-modNickels) / nickel);
+
+        return "Quarters: " + numQuarters + " Dimes: " + numDimes + " Nickels: " + numNickels;
+    }
+
     public void purchaseProduct(Product product) {
         totalMoney -= Double.parseDouble(product.getPrice());
     }

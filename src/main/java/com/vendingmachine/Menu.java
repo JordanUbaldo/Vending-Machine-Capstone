@@ -39,7 +39,7 @@ public class Menu {
                     System.out.println("(2) Select Product");
                     System.out.println("(3) Finish Transaction");
                     System.out.println();
-                    System.out.println("Current Money Provided: $" + customer.getTotalMoney() + "0");
+                    System.out.println("Current Money Provided: $" + customer.getTotalMoney());
                     System.out.println();
                     System.out.println("Select Your Option:");
                     userInput2 = scan.nextLine();
@@ -60,15 +60,27 @@ public class Menu {
                         }
                         // Filter for Sold out or invalid on the user option below. (If else statement?)
                         System.out.println("Select Your Option:");
-                        String userInput4 = scan.nextLine();
-                        customer.purchaseProduct(products.get(userInput4));
-                        System.out.println(products.get(userInput4).getName() + ", $" + products.get(userInput4).getPrice() + ", $" + customer.getTotalMoney());
-                        System.out.println(products.get(userInput4).getProductMessage());
+                        String userInput4 = scan.nextLine().toUpperCase();
 
+                        if (!products.containsKey(userInput4)) {
+                            System.out.println("Invalid Option!");
+                        } else if (Double.parseDouble(products.get(userInput4).getPrice()) > customer.getTotalMoney()) {
+                            System.out.println("Not Enough Funds!");
+                        } else if (products.get(userInput4).getStock().equals("Sold Out!")) {
+                            System.out.println(products.get(userInput4).getName() + " is sold out!");
+                        } else {
+                            customer.purchaseProduct(products.get(userInput4));
+                            products.get(userInput4).itemPurchased();
+                            System.out.println(products.get(userInput4).getName() + ", Cost: $" + products.get(userInput4).getPrice() + ", Money Remaining: $" + customer.getTotalMoney());
+                            System.out.println(products.get(userInput4).getProductMessage());
+                        }
 
                     } else if (userInput2.equals("3")) {
+                        System.out.println(customer.getChange());
+                        System.out.println("Current Money Provided: " + customer.getTotalMoney());
                         break;
                     } else {
+                        System.out.println();
                         System.out.println("Invalid option");
                     }
                 }
