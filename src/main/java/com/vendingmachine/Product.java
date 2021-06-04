@@ -51,7 +51,15 @@ public class Product extends VendingMachine {
         this.category = category;
     }
 
-    public int getStock() {
-        return stock;
+    public String getStock() {
+        if (stock > 0) {
+            return String.valueOf(stock);
+        } else {
+            return "Sold Out!";
+        }
+    }
+
+    public void itemPurchased() {
+        stock--;
     }
 }
