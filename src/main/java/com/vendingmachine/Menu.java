@@ -55,7 +55,7 @@ public class Menu extends VendingMachine {
 
                     } else if (userInput2.equals("2")) {
                         for (String product : products.keySet()) {
-                            System.out.println(product + ", $" + products.get(product).getPrice() + " " + products.get(product).getName() + ", " + "Stock: " + products.get(product).getStock());
+                            System.out.println("(" + product + ") $" + products.get(product).getPrice() + " " + products.get(product).getName() + ", " + "Stock: " + products.get(product).getStock());
                         }
 
                         System.out.println("\nSelect Your Option:");

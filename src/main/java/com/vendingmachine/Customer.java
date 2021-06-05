@@ -47,4 +47,8 @@ public class Customer extends VendingMachine {
         totalMoney = Double.parseDouble(total);
         return totalMoney;
     }
+
+    public void setTotalMoney(double totalMoney) {
+        this.totalMoney = totalMoney;
+    }
 }

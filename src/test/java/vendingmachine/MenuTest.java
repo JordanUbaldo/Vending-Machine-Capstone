@@ -10,15 +10,21 @@ public class MenuTest {
     private Menu objectUnderTest;
 
     @Before
-    public void fresh_new_object() {
+    public void new_menu() {
         objectUnderTest = new Menu();
     }
+
     @Test
-    public void testMenu1() {
+    public void invalid_menu_input_returns_blank_string() {
         String testInput = "5";
-         String output = Menu.mainMenu(testInput);
+        String output = Menu.menuValidation(testInput);
         Assert.assertEquals("", output);
     }
 
-
+    @Test
+    public void valid_menu_input_returns_input() {
+        String testInput = "1";
+        String output = Menu.menuValidation(testInput);
+        Assert.assertEquals("1", output);
+    }
 }
