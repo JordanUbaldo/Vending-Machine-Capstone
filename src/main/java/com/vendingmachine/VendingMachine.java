@@ -5,9 +5,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.*;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Scanner;
 
 public class VendingMachine {
 
@@ -21,9 +22,7 @@ public class VendingMachine {
                 String[] lineArray = line.split("\\|", 4);
                 Product product = new Product(lineArray[0], lineArray[1], lineArray[2], lineArray[3]);
                 products.put(lineArray[0], product);
-
             }
-
         } catch (IOException e) {
             System.out.println("Error: Invalid File");
         }
@@ -31,13 +30,12 @@ public class VendingMachine {
     }
 
     public void addToLog(String logInfo) {
-
         File log = new File("log.txt");
 
         try (PrintWriter print = new PrintWriter(new FileWriter(log, true))) {
-            print.println(LocalDate.now() + " " + LocalTime.now().withNano(0)+ " " + logInfo);
+            print.println(LocalDate.now() + " " + LocalTime.now().withNano(0) + " " + logInfo);
         } catch (IOException e) {
-            System.out.println("Could Not Add To File");
+            System.out.println("Could Not Add To File!");
         }
     }
 }
