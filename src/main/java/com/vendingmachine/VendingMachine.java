@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.*;
 
 public class VendingMachine {
@@ -17,7 +19,7 @@ public class VendingMachine {
             while (fileScanner.hasNextLine()) {
                 String line = fileScanner.nextLine();
                 String[] lineArray = line.split("\\|", 4);
-                Product product = new Product(lineArray[1], lineArray[2], lineArray[3]);
+                Product product = new Product(lineArray[0], lineArray[1], lineArray[2], lineArray[3]);
                 products.put(lineArray[0], product);
 
             }
@@ -28,23 +30,14 @@ public class VendingMachine {
         return products;
     }
 
-    public void addToLog(String logInfo) { //fix time, date formatting.
+    public void addToLog(String logInfo) {
 
         File log = new File("log.txt");
 
         try (PrintWriter print = new PrintWriter(new FileWriter(log, true))) {
-            print.println(LocalDateTime.now() + " " + logInfo);
+            print.println(LocalDate.now() + " " + LocalTime.now().withNano(0)+ " " + logInfo);
         } catch (IOException e) {
             System.out.println("Could Not Add To File");
         }
-    }
-
-    public String getSlot(Product product) { //Maybe get rid of this method? Depending on how to get key for log.
-        String slot = "";
-        for (Map.Entry<String, Product> entry : getProducts().entrySet()) {
-            if (entry.getValue().equals(product)) {
-                slot = entry.getKey();
-            }
-        } return slot;
     }
 }

@@ -6,11 +6,13 @@ public class Product extends VendingMachine {
     private String price;
     private String category;
     private int stock = 5;
+    private String slot;
 
-    public Product(String name, String price, String category) {
+    public Product(String slot, String name, String price, String category) {
         this.name = name;
         this.price = price;
         this.category = category;
+        this.slot = slot;
     }
 
     public String getProductMessage() {
@@ -61,5 +63,9 @@ public class Product extends VendingMachine {
 
     public void itemPurchased() {
         stock--;
+    }
+
+    public String getSlot() {
+        return slot;
     }
 }

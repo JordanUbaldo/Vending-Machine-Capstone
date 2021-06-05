@@ -27,9 +27,9 @@ public class Customer extends VendingMachine {
         double modDimes = modQuarters % dime;
         double modNickels = modDimes % nickel;
 
-        int numQuarters = (int) Math.rint((totalMoney - modQuarters) / quarter);
-        int numDimes = (int) Math.rint((modQuarters-modDimes) / dime);
-        int numNickels = (int) Math.rint((modDimes-modNickels) / nickel);
+        int numQuarters = (int) Math.round((totalMoney - modQuarters) / quarter);
+        int numDimes = (int) Math.round((modQuarters-modDimes) / dime);
+        int numNickels = (int) Math.round((modDimes-modNickels) / nickel);
         double amountOfChange = totalMoney;
         totalMoney -= (numQuarters * quarter) + (numDimes * dime) + (numNickels * nickel);
         addToLog("GIVE CHANGE: $" + amountOfChange + " $" + totalMoney);
@@ -40,7 +40,7 @@ public class Customer extends VendingMachine {
         double moneyBeforePurchase = totalMoney;
         totalMoney -= Double.parseDouble(product.getPrice());
 
-        addToLog(product.getName() + " " + getSlot(product) + " $" + moneyBeforePurchase + " $" + totalMoney); // Figure how to get key from map for location. Check comment in vending machine class.
+        addToLog(product.getName() + " " + product.getSlot() + " $" + moneyBeforePurchase + " $" + totalMoney);
     }
 
     public double getTotalMoney() {
