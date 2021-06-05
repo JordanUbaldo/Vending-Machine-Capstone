@@ -1,4 +1,4 @@
-package vendingmachine;
+package com.vendingmachine;
 
 import com.vendingmachine.Customer;
 import org.junit.Assert;
