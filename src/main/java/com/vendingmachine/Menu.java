@@ -11,83 +11,87 @@ public class Menu extends VendingMachine {
         Map<String, Product> products = vendoMatic.getProducts();
 
         Scanner scan = new Scanner(System.in);
+        String userInput1 = "";
 
+        while (!userInput1.equals("3")) {
 
-        String userInput = "";
-        while (!userInput.equals("3")) {
-            System.out.println("=================================");
+            System.out.println("\n=================================");
             System.out.println("Welcome to the Vendo-Matic 800");
-            System.out.println("=================================" + "\n");
-            System.out.println("(1) Display Vending Machine Items");
+            System.out.println("=================================");
+            System.out.println("\n(1) Display Vending Machine Items");
             System.out.println("(2) Purchase");
             System.out.println("(3) Exit");
-            System.out.println();
-            System.out.println("Select Your Option:");
-            userInput = scan.nextLine();
-            userInput = Menu.mainMenu(userInput);
+            System.out.println("\nSelect Your Option:");
 
-            if (userInput.equals("1")) {
+            userInput1 = scan.nextLine();
+            userInput1 = Menu.mainMenu(userInput1);
+
+            if (userInput1.equals("1")) {
+
                 for (String product : products.keySet()) {
                     System.out.println(product + ", $" + products.get(product).getPrice() + " " + products.get(product).getName() + ", " + "Stock: " + products.get(product).getStock());
                 }
-                System.out.println();
-            } else if (userInput.equals("2")) {
+
+            } else if (userInput1.equals("2")) {
+
                 String userInput2 = "";
                 Customer customer = new Customer();
+
                 while (userInput2 != "3") {
-                    System.out.println();
                     System.out.println("(1) Feed Money");
                     System.out.println("(2) Select Product");
                     System.out.println("(3) Finish Transaction");
-                    System.out.println();
-                    System.out.println("Current Money Provided: $" + customer.getTotalMoney());
-                    System.out.println();
-                    System.out.println("Select Your Option:");
+                    System.out.println("\nCurrent Money Provided: $" + customer.getTotalMoney());
+                    System.out.println("\nSelect Your Option:");
+
                     userInput2 = scan.nextLine();
 
                     if (userInput2.equals("1")) {
-                        System.out.println();
+
                         System.out.println("Enter Amount (Only Whole Dollars):");
                         String userInput3 = scan.nextLine();
+
                         try {
                             customer.feedMoney(userInput3);
                         } catch (Exception e) {
-                            System.out.println("Must be whole dollar amount!");
+                            System.out.println("\nMust Be Whole Dollar Amount!");
                             System.out.println();
                         }
+
                     } else if (userInput2.equals("2")) {
+
                         for (String product : products.keySet()) {
                             System.out.println(product + ", $" + products.get(product).getPrice() + " " + products.get(product).getName() + ", " + "Stock: " + products.get(product).getStock());
                         }
-                        System.out.println("Select Your Option:");
-                        String userInput4 = scan.nextLine().toUpperCase();
 
-                        if (!products.containsKey(userInput4)) {
-                            System.out.println("Invalid Option!");
-                        } else if (Double.parseDouble(products.get(userInput4).getPrice()) > customer.getTotalMoney()) {
-                            System.out.println("Not Enough Funds!");
-                        } else if (products.get(userInput4).getStock().equals("Sold Out!")) {
-                            System.out.println(products.get(userInput4).getName() + " is sold out!");
+                        System.out.println("\nSelect Your Option:");
+                        String userInput3 = scan.nextLine().toUpperCase();
+
+                        if (!products.containsKey(userInput3)) {
+                            System.out.println("\nInvalid Option!");
+                        } else if (Double.parseDouble(products.get(userInput3).getPrice()) > customer.getTotalMoney()) {
+                            System.out.println("\nNot Enough Funds!");
+                        } else if (products.get(userInput3).getStock().equals("Sold Out!")) {
+                            System.out.println(products.get("\n" + userInput3).getName() + " Is Sold Out!");
                         } else {
-                            customer.purchaseProduct(products.get(userInput4));
-                            products.get(userInput4).itemPurchased();
-                            System.out.println(products.get(userInput4).getName() + ", Cost: $" + products.get(userInput4).getPrice() + ", Money Remaining: $" + customer.getTotalMoney());
-                            System.out.println(products.get(userInput4).getProductMessage());
-                            System.out.println();
+                            customer.purchaseProduct(products.get(userInput3));
+                            products.get(userInput3).itemPurchased();
+                            System.out.println(products.get(userInput3).getName() + ", Cost: $" + products.get(userInput3).getPrice() + ", Money Remaining: $" + customer.getTotalMoney());
+                            System.out.println("\n" + products.get(userInput3).getProductMessage());
                         }
 
                     } else if (userInput2.equals("3")) {
                         System.out.println(customer.getChange());
-                        System.out.println("Current Money Provided: " + customer.getTotalMoney());
+                        System.out.println("\nCurrent Money Provided: " + customer.getTotalMoney());
                         break;
                     } else {
-                        System.out.println();
-                        System.out.println("Invalid option");
+                        System.out.println("\nInvalid Option!");
                     }
                 }
 
-            } else if (userInput.equals("3")) {
+            } else if (userInput1.equals("3")) {
                 System.exit(0);
+
             } else {
                 System.out.println("Invalid Option!");
             }
@@ -98,6 +102,7 @@ public class Menu extends VendingMachine {
 
         if (input.equals("1") || input.equals("2") || input.equals("3")) {
             return input;
-        } return "";
+        }
+        return "";
     }
 }
