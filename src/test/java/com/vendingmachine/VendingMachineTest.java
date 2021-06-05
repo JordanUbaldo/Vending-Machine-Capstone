@@ -3,6 +3,8 @@ package com.vendingmachine;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.io.File;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -29,8 +31,8 @@ public class VendingMachineTest {
     public void test_add_to_log() {
         String output = "";
         objectUnderTest.addToLog("Testing Add To Log");
-        try {
-            Scanner fileScanner = new Scanner("/Users/student/workspace/java-capstone-module-1-team-7/log.txt");
+        File testFile = new File("/Users/student/workspace/java-capstone-module-1-team-7/log.txt");
+        try (Scanner fileScanner = new Scanner(testFile)) {
             while (fileScanner.hasNextLine()) {
                 String lineTest = fileScanner.nextLine();
                 if (lineTest.contains("Testing Add To Log")) {
