@@ -3,9 +3,6 @@ package com.vendingmachine;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.Map;
 import java.util.Scanner;
 

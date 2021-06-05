@@ -3,7 +3,7 @@ package com.vendingmachine;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Menu extends VendingMachine {
+public class Menu {
 
     private static VendingMachine vendoMatic = new VendingMachine();
     private static Map<String, Product> products = vendoMatic.getProducts();

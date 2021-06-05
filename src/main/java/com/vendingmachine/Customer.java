@@ -11,8 +11,10 @@ public class Customer extends VendingMachine {
             double fedMoney = Double.parseDouble(moneyInput);
             this.totalMoney += fedMoney;
             addToLog("FEED MONEY: $" + fedMoney + " $" + totalMoney);
+        } else if (Double.parseDouble(moneyInput) < 0) {
+            System.out.println("Must Be A Positive Number!\n");
         } else {
-            System.out.println("Must be whole dollar amount!");
+            System.out.println("Must Be Whole Dollar Amount!\n");
         }
     }
 
