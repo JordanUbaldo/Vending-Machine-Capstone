@@ -1,18 +1,24 @@
 package vendingmachine;
 
 import com.vendingmachine.Menu;
-import com.vendingmachine.Product;
-import com.vendingmachine.VendingMachine;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Map;
-
 public class MenuTest {
 
-    @Test
-    public void menu_test_1() {
-        String a = "hi";
+    private Menu objectUnderTest;
+
+    @Before
+    public void fresh_new_object() {
+        objectUnderTest = new Menu();
     }
+    @Test
+    public void testMenu1() {
+        String testInput = "5";
+         String output = Menu.mainMenu(testInput);
+        Assert.assertEquals("", output);
+    }
+
 
 }
