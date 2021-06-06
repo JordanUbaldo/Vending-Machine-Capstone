@@ -9,7 +9,6 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class VendingMachineTest {
-
     private VendingMachine objectUnderTest;
 
     @Before
@@ -31,7 +30,7 @@ public class VendingMachineTest {
     public void test_add_to_log() {
         String output = "";
         objectUnderTest.addToLog("Testing Add To Log");
-       File testFile = new File("/Users/student/workspace/java-capstone-module-1-team-7/log.txt");
+        File testFile = new File("log.txt");
         try (Scanner fileScanner = new Scanner(testFile)) {
             while (fileScanner.hasNextLine()) {
                 String lineTest = fileScanner.nextLine();
