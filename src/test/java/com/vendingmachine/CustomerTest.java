@@ -5,7 +5,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class CustomerTest {
-
     private Customer objectUnderTest;
 
     @Before
@@ -30,21 +29,21 @@ public class CustomerTest {
     @Test
     public void test_feed_money() {
         objectUnderTest.feedMoney("20");
-        double output= objectUnderTest.getTotalMoney();
+        double output = objectUnderTest.getTotalMoney();
         Assert.assertEquals(20.0, output, 0.0);
     }
 
     @Test
     public void test_feed_money_not_whole_dollar() {
         objectUnderTest.feedMoney("19.23");
-        double output= objectUnderTest.getTotalMoney();
+        double output = objectUnderTest.getTotalMoney();
         Assert.assertEquals(0, output, 0.0);
     }
 
     @Test
     public void test_feed_money_negative() {
         objectUnderTest.feedMoney("-10");
-        double output= objectUnderTest.getTotalMoney();
+        double output = objectUnderTest.getTotalMoney();
         Assert.assertEquals(0, output, 0.0);
     }
 

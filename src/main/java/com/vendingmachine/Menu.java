@@ -4,7 +4,6 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Menu {
-
     private static VendingMachine vendoMatic = new VendingMachine();
     private static Map<String, Product> products = vendoMatic.getProducts();
 
@@ -92,7 +91,7 @@ public class Menu {
         }
     }
 
-    public static String menuValidation (String input) {
+    public static String menuValidation(String input) {
         if (input.equals("1") || input.equals("2") || input.equals("3")) {
             return input;
         }
