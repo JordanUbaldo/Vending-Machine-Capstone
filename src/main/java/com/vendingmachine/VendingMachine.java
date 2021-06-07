@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -33,7 +34,7 @@ public class VendingMachine {
         File log = new File("log.txt");
 
         try (PrintWriter print = new PrintWriter(new FileWriter(log, true))) {
-            print.println(LocalDate.now() + " " + LocalTime.now().withNano(0) + " " + logInfo);
+            print.println(LocalDate.now() + " " + LocalTime.now().format(DateTimeFormatter.ofPattern("hh:mm:ss a")) + " " + logInfo);
         } catch (IOException e) {
             System.out.println("Could Not Add To File!");
         }
